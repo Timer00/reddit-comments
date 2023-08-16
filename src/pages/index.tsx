@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
-import { Thread } from "~/components/Thread";
+import { type CommentThree, Thread } from "~/components/Thread";
+import { CommentForm } from "~/components/CommentForm";
 
 const CommentThrees = [
   {
@@ -113,7 +114,7 @@ const CommentThrees = [
     }
   ]
 },
-];
+] as CommentThree[];
 
 export default function Home() {
   const [threads,] = useState(CommentThrees);
@@ -127,9 +128,11 @@ export default function Home() {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          Comment as Timer00
-          <input placeholder='What are your thoughts?' className='border-solid border-black border-b-2'/>
           <div className='thread'>
+            <CommentForm user='Timer00' />
+
+            <hr className='py-5'/>
+
             {threads.map(props => <Thread key={props.id} {...props} />)}
           </div>
         </div>
