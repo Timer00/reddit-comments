@@ -1,17 +1,13 @@
 import { Comment } from "~/components/Comment";
+import { type CommentThree } from "~/pages";
 
-export interface CommentThree {
-  id: number;
-  author: string;
-  text: string;
+export interface ThreadProps extends CommentThree {
   nestLevel?: number;
-
-  children?: CommentThree[]
 }
 
 // TODO: render only a limited amount of threads at a time to prevent long loading times and performance issues
 
-export const Thread = ({ author, text, children, nestLevel = 0 }: CommentThree) => {
+export const Thread = ({ author, text, children, nestLevel = 0 }: ThreadProps) => {
 
   return (
     <div className={`${nestLevel > 0 && 'pl-1 ml-8 border-l-2'}`}>
