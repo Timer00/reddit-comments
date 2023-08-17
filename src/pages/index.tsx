@@ -1,26 +1,31 @@
 import Head from "next/head";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Thread } from "~/components/Thread";
-import { CommentForm } from "~/components/CommentForm";
+import { type ActionSetProps, CommentForm } from "~/components/CommentForm";
 import commentThrees from "~/assets/mockData.json";
 import { type CommentThree, type NewComment } from "~/types/comments";
 import { addNestedComment } from "~/utils/comments";
+import { SubmitButton } from "~/components/SubmitButton";
 
 export default function Home() {
   const [threads, setThreads] = useState(commentThrees as CommentThree[]);
   const [lastId, setLastId] = useState(19);
   //TODO: find a better way to fetch the initial lastId, it should come from somewhere not be set manually
 
-  const submitNewComment = (user: string, content: string) => {
-    addNewCommentToThree({ author: user, text: content, id: lastId + 1 });
-    setLastId(lastId + 1);
+  const submitRootComment = ({ author, text }: NewComment) => {
+    addNewCommentToThree({ author, text, id: lastId + 1 });
   }
 
-  const addNewCommentToThree = (newComment: NewComment) => {
+  const submitNestedComment = ({ author, text, parentId }: NewComment) => {
+    addNewCommentToThree({ author, text, parentId, id: lastId + 1 });
+  }
+
+  const addNewCommentToThree = (newComment: CommentThree) => {
     if (!newComment.parentId)
       setThreads([...threads, newComment]);
     else
       setThreads(addNestedComment(threads, newComment));
+    setLastId(lastId + 1);
   }
 
   return (
@@ -33,11 +38,16 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <div className='thread'>
-            <CommentForm onSubmit={submitNewComment} user='Timer00' />
+            <CommentForm onSubmit={submitRootComment} user='Timer00' ActionSet={
+              ({ disabled }: ActionSetProps) =>
+                <>
+                  <SubmitButton disabled={disabled}>Reply</SubmitButton>
+                </>
+            } />
 
             <hr className='py-5' />
 
-            {threads.map(props => <Thread key={props.id} {...props} />)}
+            {threads.map(props => <Thread key={props.id} onSubmitReply={submitNestedComment} {...props} />)}
           </div>
         </div>
       </main>

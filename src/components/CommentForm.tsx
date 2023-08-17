@@ -1,16 +1,23 @@
 import React, { useState } from "react";
+import { type NewComment } from "~/types/comments";
+
+export type ActionSetProps = {
+  disabled: boolean;
+};
 
 interface CommentFormProps {
   user: string
-  onSubmit: (user: string, content: string) => void
+  onSubmit: (newComment: NewComment) => void
+  ActionSet: (props: ActionSetProps) => React.ReactNode
 }
 
-export const CommentForm = ({ user, onSubmit }: CommentFormProps) => {
+export const CommentForm = ({ user, onSubmit, ActionSet }: CommentFormProps) => {
   const [content, setContent] = useState("");
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(user, content);
+    onSubmit({ author: user, text: content });
+    setContent('');
   }
 
   return (
@@ -29,10 +36,7 @@ export const CommentForm = ({ user, onSubmit }: CommentFormProps) => {
           onChange={e => setContent(e.target.value)}
         />
         <div className='bg-gray-200 flex flex-row'>
-          <button disabled={!content}
-                  className='disabled:opacity-50 disabled:cursor-not-allowed m-1 bg-white rounded text-xs px-2 font-bold'>
-            Comment
-          </button>
+          <ActionSet disabled={!content} />
         </div>
       </div>
     </form>
