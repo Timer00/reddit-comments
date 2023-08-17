@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-interface CommentForm {
+interface CommentFormProps {
   user: string
   onSubmit: (user: string, content: string) => void
 }
 
-export const CommentForm = ({ user, onSubmit }: CommentForm) => {
+export const CommentForm = ({ user, onSubmit }: CommentFormProps) => {
   const [content, setContent] = useState("");
 
   const submit = (e: React.FormEvent) => {

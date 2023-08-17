@@ -1,8 +1,7 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Thread } from "~/components/Thread";
 import { CommentForm } from "~/components/CommentForm";
-import { log } from "next/dist/server/typescript/utils";
 
 //TODO: write comment related functionality in different file(s)
 export interface CommentThree {
@@ -159,7 +158,7 @@ export default function Home() {
   const [threads, setThreads] = useState(CommentThrees);
   const [lastId, setLastId] = useState(19);
   //TODO: find a better way to fetch the initial lastId, it should come from somewhere not be set manually
-  
+
   const submitNewComment = (user: string, content: string) => {
     addNewComment({ author: user, text: content, id: lastId + 1 });
     setLastId(lastId + 1);
