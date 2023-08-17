@@ -1,5 +1,5 @@
 import { Comment } from "~/components/Comment";
-import { type CommentThree } from "~/pages";
+import { type CommentThree } from "~/types/comments";
 
 export interface ThreadProps extends CommentThree {
   nestLevel?: number;

@@ -1,0 +1,117 @@
+[
+  {
+    "id": 1,
+    "text": "This is the root comment",
+    "author": "Greg",
+    "children": [
+      {
+        "id": 2,
+        "text": "This is a direct reply to the root comment",
+        "author": "Tim",
+        "children": [
+          {
+            "id": 4,
+            "text": "This is a nested reply to comment 2",
+            "author": "Alice",
+            "children": [
+              {
+                "id": 5,
+                "text": "This is a nested reply to comment 4",
+                "author": "Bob"
+              }
+            ]
+          },
+          {
+            "id": 6,
+            "text": "Another nested reply to comment 2",
+            "author": "Eve"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "text": "Another direct reply to the root comment",
+        "author": "John",
+        "children": [
+          {
+            "id": 7,
+            "text": "A nested reply to comment 3",
+            "author": "Charlie",
+            "children": [
+              {
+                "id": 8,
+                "text": "A deep nested reply to comment 7",
+                "author": "David"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "text": "Third direct reply to the root comment",
+        "author": "Hannah"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Another root comment",
+    "author": "Isaac",
+    "children": [
+      {
+        "id": 11,
+        "text": "Reply to the second root comment",
+        "author": "Jack"
+      },
+      {
+        "id": 12,
+        "text": "Another reply to the second root comment",
+        "author": "Kelly",
+        "children": [
+          {
+            "id": 13,
+            "text": "Nested reply to comment 12",
+            "author": "Liam"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "text": "Yet another root comment",
+    "author": "Mia",
+    "children": [
+      {
+        "id": 15,
+        "text": "Reply to the third root comment",
+        "author": "Noah"
+      },
+      {
+        "id": 16,
+        "text": "Another reply to the third root comment",
+        "author": "Olivia",
+        "children": [
+          {
+            "id": 17,
+            "text": "Nested reply to comment 16",
+            "author": "Peyton"
+          },
+          {
+            "id": 18,
+            "text": "Another nested reply to comment 16",
+            "author": "Quinn",
+            "children": [
+              {
+                "id": 19,
+                "text": "Deep nested reply to comment 18",
+                "author": "Riley"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
