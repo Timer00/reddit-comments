@@ -1,8 +1,7 @@
 import { Comment } from "~/components/Comment";
 import { type CommentThree, type NewComment } from "~/types/comments";
 import React, { useState } from "react";
-import { type ActionSetProps, CommentForm } from "~/components/CommentForm";
-import { SubmitButton } from "~/components/SubmitButton";
+import { CommentForm } from "~/components/CommentForm";
 
 export interface ThreadProps extends CommentThree {
   nestLevel?: number
@@ -28,16 +27,10 @@ export const Thread = ({ id, author, text, children, nestLevel = 0, onSubmitRepl
         <button>down</button>
         {/* These are placeholders for vote logic */}
 
-        <button onClick={() => setShowReply(!showReply)} className='border-2 rounded-2xl p-1'>{'Reply'}</button>
+        <button onClick={() => setShowReply(!showReply)} className='border-2 rounded-2xl p-1'>{showReply ? 'Cancel' : 'Reply'}</button>
       </div>
 
-      {showReply && <CommentForm user={'Timer00'} onSubmit={onSubmit} ActionSet={
-        ({ disabled }: ActionSetProps) =>
-          <>
-            <button onClick={() => setShowReply(false)}>Cancel</button>
-            <SubmitButton disabled={disabled}>Reply</SubmitButton>
-          </>
-      } />}
+      {showReply && <CommentForm user={'Timer00'} onSubmit={onSubmit}/>}
 
       {children?.map(child =>
         <Thread key={child.id} {...child} nestLevel={nestLevel + 1} onSubmitReply={onSubmitReply} />)}

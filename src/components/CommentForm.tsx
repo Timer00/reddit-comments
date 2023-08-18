@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { type NewComment } from "~/types/comments";
+import { SubmitButton } from "~/components/SubmitButton";
 
 export type ActionSetProps = {
   disabled: boolean;
@@ -8,10 +9,9 @@ export type ActionSetProps = {
 interface CommentFormProps {
   user: string
   onSubmit: (newComment: NewComment) => void
-  ActionSet: (props: ActionSetProps) => React.ReactNode
 }
 
-export const CommentForm = ({ user, onSubmit, ActionSet }: CommentFormProps) => {
+export const CommentForm = ({ user, onSubmit }: CommentFormProps) => {
   const [content, setContent] = useState("");
 
   const submit = (e: React.FormEvent) => {
@@ -36,7 +36,7 @@ export const CommentForm = ({ user, onSubmit, ActionSet }: CommentFormProps) => 
           onChange={e => setContent(e.target.value)}
         />
         <div className='bg-gray-200 flex flex-row'>
-          <ActionSet disabled={!content} />
+          <SubmitButton disabled={!content}>Reply</SubmitButton>
         </div>
       </div>
     </form>
