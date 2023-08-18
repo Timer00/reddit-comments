@@ -9,6 +9,7 @@ import { addNestedComment } from "~/utils/comments";
 export default function Home() {
   const [threads, setThreads] = useState(commentThrees as CommentThree[]);
   const [lastId, setLastId] = useState(19);
+
   //TODO: find a better way to fetch the initial lastId, it should come from somewhere not be set manually
 
   const submitRootComment = ({ author, text }: NewComment) => {
@@ -37,7 +38,7 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <div className='thread'>
-            <CommentForm onSubmit={submitRootComment} user='Timer00' />
+            <CommentForm onSubmit={submitRootComment} />
 
             <hr className='py-5' />
 

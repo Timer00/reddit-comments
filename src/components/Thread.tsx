@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { CommentForm } from "~/components/CommentForm";
 import { Arrow } from "~/assets/icons/Arrow";
 import { Chat } from "~/assets/icons/Chat";
+import { useUser } from "~/hooks/useUser";
 
 export interface ThreadProps extends CommentThree {
   nestLevel?: number
@@ -35,7 +36,7 @@ export const Thread = ({ id, author, text, children, nestLevel = 0, onSubmitRepl
         </button>
       </div>
 
-      {showReply && <CommentForm user={'Timer00'} onSubmit={onSubmit}/>}
+      {showReply && <CommentForm onSubmit={onSubmit}/>}
 
       {children?.map(child =>
         <Thread key={child.id} {...child} nestLevel={nestLevel + 1} onSubmitReply={onSubmitReply} />)}
