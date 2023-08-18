@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { CommentForm } from "~/components/CommentForm";
 import { Arrow } from "~/assets/icons/Arrow";
 import { Chat } from "~/assets/icons/Chat";
-import { useUser } from "~/hooks/useUser";
 
 export interface ThreadProps extends CommentThree {
   nestLevel?: number

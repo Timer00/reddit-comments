@@ -20,11 +20,11 @@ export default function Home() {
     addNewCommentToThree({ author, text, parentId, id: lastId + 1 });
   }
 
-  const addNewCommentToThree = (newComment: CommentThree) => {
-    if (!newComment.parentId)
-      setThreads([...threads, newComment]);
+  const addNewCommentToThree = (newCommentWithId: CommentThree) => {
+    if (!newCommentWithId.parentId)
+      setThreads([...threads, newCommentWithId]);
     else
-      setThreads(addNestedComment(threads, newComment));
+      setThreads(addNestedComment(threads, newCommentWithId));
     setLastId(lastId + 1);
   }
 
