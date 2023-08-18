@@ -1,11 +1,10 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { Thread } from "~/components/Thread";
-import { type ActionSetProps, CommentForm } from "~/components/CommentForm";
+import { CommentForm } from "~/components/CommentForm";
 import commentThrees from "~/assets/mockData.json";
 import { type CommentThree, type NewComment } from "~/types/comments";
 import { addNestedComment } from "~/utils/comments";
-import { SubmitButton } from "~/components/SubmitButton";
 
 export default function Home() {
   const [threads, setThreads] = useState(commentThrees as CommentThree[]);

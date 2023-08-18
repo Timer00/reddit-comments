@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import { type NewComment } from "~/types/comments";
 import { SubmitButton } from "~/components/SubmitButton";
 
-export type ActionSetProps = {
-  disabled: boolean;
-};
-
 interface CommentFormProps {
   user: string
   onSubmit: (newComment: NewComment) => void
