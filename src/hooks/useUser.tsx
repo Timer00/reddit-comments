@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import React, { createContext, useContext, useState, type ReactNode, useEffect, useRef } from 'react';
 
 type User = string;
 
@@ -20,6 +20,15 @@ interface UserProviderProps {
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User>(defaultUser);
+
+  useEffect(() => {
+    const localUser = localStorage.getItem('user');
+    if (user === defaultUser && localUser){
+      setUser(localUser)
+      return;
+    }
+    localStorage.setItem('user', user);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
