@@ -1,4 +1,4 @@
-import { type CommentThree, type NewComment } from "~/types/comments";
+import { type CommentThree } from "~/types/comments";
 
 export function addNestedComment(threads: CommentThree[], newComment: CommentThree): CommentThree[] {
   return threads.map(comment => {

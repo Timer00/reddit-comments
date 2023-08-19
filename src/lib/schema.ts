@@ -52,3 +52,6 @@ export interface Database {
     }
   }
 }
+//TODO: Make it clearer that Tables<tablename> is a single object not the table as an array
+export type Tables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Row']
+export type Enums<T extends keyof Database['public']['Enums']> = Database['public']['Enums'][T]

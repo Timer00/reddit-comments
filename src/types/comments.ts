@@ -1,6 +1,5 @@
 import { util } from "zod";
 import Omit = util.Omit;
-
 export interface CommentThree {
   id: number;
   author: string;

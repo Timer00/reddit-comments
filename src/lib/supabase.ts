@@ -7,5 +7,3 @@ export const supabase = createClient(
   {
     auth: { persistSession: false },
   })
-
-console.log(supabase)

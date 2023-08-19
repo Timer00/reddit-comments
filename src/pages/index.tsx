@@ -2,13 +2,12 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import { Thread } from "~/components/Thread";
 import { CommentForm } from "~/components/CommentForm";
-import commentThrees from "~/assets/mockData.json";
 import { type CommentThree, type NewComment } from "~/types/comments";
 import { addNestedComment } from "~/utils/comments";
-import { supabase } from "~/lib/supabase";
+import { getThreads } from "~/controllers/comments";
 
 export default function Home() {
-  const [threads, setThreads] = useState(commentThrees as CommentThree[]);
+  const [threads, setThreads] = useState<CommentThree[]>([]);
   const [lastId, setLastId] = useState(19);
   //TODO: find a better way to fetch the initial lastId, it should come from somewhere not be set manually
 
@@ -17,14 +16,12 @@ export default function Home() {
   },[])
 
   const fetchThreads = async () => {
-    const { data: comments, error } = await supabase
-      .from('comments')
-      .select('*')
-
-    if (error)
-      console.error('Error: ', error)
-    else
-      console.log(comments);
+    try {
+      const comments = await getThreads();
+      setThreads(comments)
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const submitRootComment = ({ author, text }: NewComment) => {
@@ -52,12 +49,15 @@ export default function Home() {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <div className='thread'>
+          <div className=''>
+            {/*TODO: Prevent layout jumping before and after loading*/}
             <CommentForm onSubmit={submitRootComment} />
 
             <hr className='py-5' />
 
-            {threads.map(props => <Thread key={props.id} onSubmitReply={submitNestedComment} {...props} />)}
+            <div className='min-h-screen'>
+              {threads.map(props => <Thread key={props.id} onSubmitReply={submitNestedComment} {...props} />)}
+            </div>
           </div>
         </div>
       </main>
