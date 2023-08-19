@@ -1,78 +1,35 @@
 [
   {
     "id": 1,
-    "text": "This is the root comment",
-    "author": "Greg",
+    "text": "Hey Bartosz and Erica! Welcome to the project.",
+    "author": "Theo",
     "children": [
       {
         "id": 2,
-        "text": "This is a direct reply to the root comment",
-        "author": "Tim",
-        "children": [
-          {
-            "id": 4,
-            "text": "This is a nested reply to comment 2",
-            "author": "Alice",
-            "children": [
-              {
-                "id": 5,
-                "text": "This is a nested reply to comment 4",
-                "author": "Bob"
-              }
-            ]
-          },
-          {
-            "id": 6,
-            "text": "Another nested reply to comment 2",
-            "author": "Eve"
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "text": "Another direct reply to the root comment",
-        "author": "John",
-        "children": [
-          {
-            "id": 7,
-            "text": "A nested reply to comment 3",
-            "author": "Charlie",
-            "children": [
-              {
-                "id": 8,
-                "text": "A deep nested reply to comment 7",
-                "author": "David"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 9,
-        "text": "Third direct reply to the root comment",
-        "author": "Hannah"
+        "text": "You can add replies...",
+        "author": "Theo"
       }
     ]
   },
   {
     "id": 10,
-    "text": "Another root comment",
-    "author": "Isaac",
+    "text": "Or add root comments!",
+    "author": "Theo",
     "children": [
       {
         "id": 11,
-        "text": "Reply to the second root comment",
-        "author": "Jack"
+        "text": "The data is all coming from a local json file.",
+        "author": "LocalTheo"
       },
       {
         "id": 12,
-        "text": "Another reply to the second root comment",
-        "author": "Kelly",
+        "text": "On refresh, any changes will be erased.",
+        "author": "Theo",
         "children": [
           {
             "id": 13,
-            "text": "Nested reply to comment 12",
-            "author": "Liam"
+            "text": "However the username should persist from local storage!",
+            "author": "Theo"
           }
         ]
       }
@@ -80,35 +37,28 @@
   },
   {
     "id": 14,
-    "text": "Yet another root comment",
+    "text": "There are definitely many improvements to be made.",
     "author": "Mia",
     "children": [
       {
         "id": 15,
-        "text": "Reply to the third root comment",
+        "text": "Implementing collapsible threads.",
         "author": "Noah"
       },
       {
         "id": 16,
-        "text": "Another reply to the third root comment",
+        "text": "Or more consistent styles.",
         "author": "Olivia",
         "children": [
           {
             "id": 17,
-            "text": "Nested reply to comment 16",
+            "text": "But I believe I got the core functionality in!",
             "author": "Peyton"
           },
           {
             "id": 18,
-            "text": "Another nested reply to comment 16",
-            "author": "Quinn",
-            "children": [
-              {
-                "id": 19,
-                "text": "Deep nested reply to comment 18",
-                "author": "Riley"
-              }
-            ]
+            "text": "Hope to hear your thoughts soon :)",
+            "author": "Quinn"
           }
         ]
       }
