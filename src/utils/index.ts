@@ -1,6 +1,6 @@
 export async function nextApiRequest<T>(
   path: string,
-  method: 'GET' = 'GET',
+  method: 'GET' | 'POST' = 'GET',
   data?: object
 ): Promise<T> {
   try {

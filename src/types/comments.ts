@@ -12,3 +12,4 @@ export interface CommentThree {
 export interface NewComment extends Omit<CommentThree, 'id'> {
   id?: number
 }
+//Todo: adapt typing of NewComment to reflect current usage

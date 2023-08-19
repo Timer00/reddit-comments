@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Thread } from "~/components/Thread";
 import { CommentForm } from "~/components/CommentForm";
 import { type CommentThree, type NewComment } from "~/types/comments";
-import { addNestedComment } from "~/utils/comments";
-import { getThreads } from "~/controllers/comments";
+import { getThreads, submitComment } from "~/controllers/comments";
+import { type ApiResponse } from "~/types";
 
 export default function Home() {
   const [threads, setThreads] = useState<CommentThree[]>([]);
-  const [lastId, setLastId] = useState(19);
-  //TODO: find a better way to fetch the initial lastId, it should come from somewhere not be set manually
 
   useEffect(()=>{
     void fetchThreads();
@@ -24,21 +22,22 @@ export default function Home() {
     }
   }
 
-  const submitRootComment = ({ author, text }: NewComment) => {
-    addNewCommentToThree({ author, text, id: lastId + 1 });
+  const submitNewComment = async ({ author, text, parentId }: NewComment) => {
+    try {
+      const response: ApiResponse = await submitComment({ author, text, parentId });
+      if (response.success) {
+        console.log('Comment submitted successfully!')
+        void fetchThreads();
+      } else {
+        // Handle specific failure based on 'response.error' if provided.
+      }
+    } catch (error) {
+      // Handle unexpected errors.
+      console.error("Error submitting comment:", error);
+    }
   }
 
-  const submitNestedComment = ({ author, text, parentId }: NewComment) => {
-    addNewCommentToThree({ author, text, parentId, id: lastId + 1 });
-  }
-
-  const addNewCommentToThree = (newCommentWithId: CommentThree) => {
-    if (!newCommentWithId.parentId)
-      setThreads([...threads, newCommentWithId]);
-    else
-      setThreads(addNestedComment(threads, newCommentWithId));
-    setLastId(lastId + 1);
-  }
+  const handleCommentSubmission = (a: NewComment) => void submitNewComment(a)
 
   return (
     <>
@@ -51,12 +50,12 @@ export default function Home() {
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <div className=''>
             {/*TODO: Prevent layout jumping before and after loading*/}
-            <CommentForm onSubmit={submitRootComment} />
+            <CommentForm onSubmit={handleCommentSubmission} />
 
             <hr className='py-5' />
 
             <div className='min-h-screen'>
-              {threads.map(props => <Thread key={props.id} onSubmitReply={submitNestedComment} {...props} />)}
+              {threads.map(props => <Thread key={props.id} onSubmitReply={handleCommentSubmission} {...props} />)}
             </div>
           </div>
         </div>
