@@ -1,15 +1,15 @@
 import { util } from "zod";
 import Omit = util.Omit;
 
-export interface CommentThree {
+export interface CommentThread {
   id: number;
   author: string;
   text: string;
 
   parentId?: number
-  children?: CommentThree[]
+  children?: CommentThread[]
 }
 
-export interface NewComment extends Omit<CommentThree, 'id'> {
+export interface NewComment extends Omit<CommentThread, 'id'> {
   id?: number
 }

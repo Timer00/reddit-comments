@@ -1,6 +1,6 @@
-import { type CommentThree, type NewComment } from "~/types/comments";
+import { type CommentThread, type NewComment } from "~/types/comments";
 
-export function addNestedComment(threads: CommentThree[], newComment: CommentThree): CommentThree[] {
+export function addNestedComment(threads: CommentThread[], newComment: CommentThread): CommentThread[] {
   return threads.map(comment => {
     // If the comment ID matches the parentId of the new comment
     if (comment.id === newComment.parentId) {
