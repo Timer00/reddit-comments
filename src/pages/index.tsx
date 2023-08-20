@@ -40,9 +40,9 @@ export default function Home() {
           <div className='thread'>
             <CommentForm onSubmit={submitRootComment} />
 
-            <hr className='py-5' />
+            <div className='py-5' />
 
-            {threads.map(props => <Thread key={props.id} onSubmitReply={submitNestedComment} {...props} />)}
+            {threads.map((props, i) => <Thread key={props.id} alternateColor={i % 2 !== 0} onSubmitReply={submitNestedComment} {...props} />)}
           </div>
         </div>
       </main>

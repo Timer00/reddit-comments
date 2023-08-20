@@ -18,8 +18,8 @@ export const CommentForm = ({ onSubmit}: CommentFormProps) => {
   }
 
   return (
-    <form onSubmit={submit} className='w-full'>
-      <label className="block text-sm font-medium leading-6 text-gray-900">
+    <form onSubmit={submit} className='w-full p-1 pt-3'>
+      <label className="block text-sm font-medium leading-6 text-gray-900 mb-1">
         Commenting as
         <span contentEditable className='ml-1'
               onClick={()=>setUser('')}
@@ -36,7 +36,7 @@ export const CommentForm = ({ onSubmit}: CommentFormProps) => {
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <div className='bg-gray-200 flex flex-row'>
+        <div className='bg-gray-200 flex flex-row items-center'>
           <SubmitButton disabled={!content || !user}>Reply</SubmitButton>
         </div>
       </div>
