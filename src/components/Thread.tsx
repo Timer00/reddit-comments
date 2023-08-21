@@ -23,11 +23,11 @@ export const Thread = ({ id, author, text, children, nestLevel = 0, onSubmitRepl
 
   return (
     <div
-      className={`p-2 pl-4 m-2 my-4 rounded border-l-4 border-gray-300 ${alternateColor ? 'bg-white' : 'bg-gray-100'} ${nestLevel > 0 && 'pl-2 pt-2 ml-8 '}`}>
+      className={`p-2 pl-4 m-2 my-4 rounded border-l-4 border-mid-gray ${alternateColor ? 'bg-secondary' : 'bg-pale-gray'} ${nestLevel > 0 && 'pl-2 pt-2 ml-8 '}`}>
       <Comment author={author} content={text} />
       <div className='flex gap-2 mt-2'>
         <button onClick={() => setShowReply(!showReply)}
-                className='text-xs flex gap-1 hover:bg-black hover:text-white border-2 rounded-2xl p-1 px-2'>
+                className='text-xs flex gap-1 hover:bg-primary hover:text-secondary border-2 rounded-2xl p-1 px-2'>
           {showReply ?
             <>
               Cancel
@@ -42,7 +42,7 @@ export const Thread = ({ id, author, text, children, nestLevel = 0, onSubmitRepl
         </button>
       </div>
 
-      {showReply && <CommentForm onSubmit={onSubmit} />}
+      {showReply && <CommentForm onSubmit={onSubmit} reply />}
 
       {children?.map(child =>
         <Thread key={child.id} {...child} nestLevel={nestLevel + 1} onSubmitReply={onSubmitReply}

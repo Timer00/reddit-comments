@@ -5,8 +5,11 @@ import { CommentForm } from "~/components/CommentForm";
 import commentThreads from "~/assets/mockData.json";
 import { type CommentThread, type NewComment } from "~/types/comments";
 import { addNestedComment } from "~/utils/comments";
+import useDarkMode from "~/hooks/useDarkMode";
+import { LightDarkToggle } from "~/components/LightDarkToggle";
 
 export default function Home() {
+  const [, flip] = useDarkMode();
   const [threads, setThreads] = useState(commentThreads as CommentThread[]);
   const [lastId, setLastId] = useState(19);
 
@@ -35,14 +38,16 @@ export default function Home() {
         <meta name="description" content="Reddit comments for Inkitt" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen  flex-col items-center justify-center">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+      <main className="min-h-screen bg-secondary text-primary">
+        <LightDarkToggle switchMode={flip} className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw]'/>
+        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
           <div className='thread'>
             <CommentForm onSubmit={submitRootComment} />
 
             <div className='py-5' />
 
-            {threads.map((props, i) => <Thread key={props.id} alternateColor={i % 2 !== 0} onSubmitReply={submitNestedComment} {...props} />)}
+            {threads.map((props, i) =>
+              <Thread key={props.id} alternateColor={i % 2 !== 0} onSubmitReply={submitNestedComment} {...props} />)}
           </div>
         </div>
       </main>
