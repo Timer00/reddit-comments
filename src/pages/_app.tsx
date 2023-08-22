@@ -8,7 +8,7 @@ export const UserContext = createContext(null);
 const MyApp: AppType = ({ Component, pageProps }) =>
   // The provider is in the app root in case the username would be needed in a header for example
   <UserProvider>
-    <Component {...pageProps} />;
+    <Component {...pageProps} />
   </UserProvider>
 
 export default MyApp;

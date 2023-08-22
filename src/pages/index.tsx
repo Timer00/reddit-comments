@@ -11,7 +11,7 @@ import Image from "next/image";
 import logo from "~/assets/Stellar Soundwave - Vaporwave.png"
 
 export default function Home() {
-  const [, flip] = useDarkMode();
+  const [isDark, flip] = useDarkMode();
   const [threads, setThreads] = useState(commentThreads as CommentThread[]);
   const [lastId, setLastId] = useState(19);
 
@@ -42,8 +42,8 @@ export default function Home() {
       </Head>
       <main className="min-h-screen bg-secondary text-primary">
         <LightDarkToggle switchMode={flip} className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw]'/>
-        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <Image src={logo} alt={'pocket-reddit'}/>
+        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16">
+          <Image src={logo} alt={'pocket-reddit'} className={isDark ? '' : 'invert'}/>
           <div className='thread'>
             <CommentForm onSubmit={submitRootComment} />
 
@@ -55,5 +55,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  );
+  )
 }
