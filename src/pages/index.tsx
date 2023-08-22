@@ -7,6 +7,8 @@ import { type CommentThread, type NewComment } from "~/types/comments";
 import { addNestedComment } from "~/utils/comments";
 import useDarkMode from "~/hooks/useDarkMode";
 import { LightDarkToggle } from "~/components/LightDarkToggle";
+import Image from "next/image";
+import logo from "~/assets/Stellar Soundwave - Vaporwave.png"
 
 export default function Home() {
   const [, flip] = useDarkMode();
@@ -41,6 +43,7 @@ export default function Home() {
       <main className="min-h-screen bg-secondary text-primary">
         <LightDarkToggle switchMode={flip} className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw]'/>
         <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+          <Image src={logo} alt={'pocket-reddit'}/>
           <div className='thread'>
             <CommentForm onSubmit={submitRootComment} />
 

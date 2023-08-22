@@ -1,35 +1,35 @@
 [
   {
     "id": 1,
-    "text": "Hey Bartosz and Erica! Welcome to the project.",
-    "author": "Theo",
+    "text": "So, has anyone else ever thought about the potential threat of robot vacuums if integrated with advanced AI?",
+    "author": "TechGuru98",
     "children": [
       {
         "id": 2,
-        "text": "You can add replies...",
-        "author": "Theo"
+        "text": "Haha, that's a wild thought! Imagine getting chased by a Roomba with an attitude.",
+        "author": "QuirkyNerd"
       }
     ]
   },
   {
     "id": 3,
-    "text": "Or add root comments!",
-    "author": "Theo",
+    "text": "I've read an article discussing how IoT devices, including robot vacuums, could potentially be hacked. It's more about data privacy though.",
+    "author": "CyberSecJane",
     "children": [
       {
         "id": 4,
-        "text": "The data is all coming from a local json file.",
-        "author": "LocalTheo"
+        "text": "Right, but it's less about the physical threat and more about data mining and privacy.",
+        "author": "ThinkerDude"
       },
       {
         "id": 5,
-        "text": "On refresh, any changes will be erased.",
-        "author": "Theo",
+        "text": "I mean, if someone hacks my robot vacuum to find out how often I spill chips on my floor, I think I have bigger problems, haha.",
+        "author": "LazyRecliner",
         "children": [
           {
             "id": 6,
-            "text": "However the username should persist from local storage!",
-            "author": "Theo"
+            "text": "Actually, the mapping data of your home layout could be valuable. Not so benign when you think of it that way.",
+            "author": "RealistRick"
           }
         ]
       }
@@ -37,28 +37,28 @@
   },
   {
     "id": 7,
-    "text": "There are definitely many improvements to be made.",
-    "author": "Mia",
+    "text": "More than physical harm, I'd worry about an AI going rogue and deciding it doesn't need to follow my cleaning schedules anymore.",
+    "author": "HouseChaos",
     "children": [
       {
         "id": 8,
-        "text": "Implementing collapsible threads.",
-        "author": "Noah"
+        "text": "What if it joins forces with the smart fridge and they stage a revolt? 😂",
+        "author": "FuturePhobe"
       },
       {
         "id": 9,
-        "text": "Or more consistent styles.",
-        "author": "Olivia",
+        "text": "Jokes aside, it's always a balance. Convenience of tech vs potential misuse or unintended consequences.",
+        "author": "BalancedBen",
         "children": [
           {
             "id": 10,
-            "text": "But I believe I got the core functionality in!",
-            "author": "Peyton"
+            "text": "As with all tech, it's how humans choose to use or misuse it. We have to be responsible.",
+            "author": "MoralCompass"
           },
           {
             "id": 11,
-            "text": "Hope to hear your thoughts soon :)",
-            "author": "Quinn"
+            "text": "Agreed. At the end of the day, the onus is on us. Be it a smartphone, a vacuum, or any AI system.",
+            "author": "TechEthicist"
           }
         ]
       }
