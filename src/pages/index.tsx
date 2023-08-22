@@ -2,12 +2,17 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import { Thread } from "~/components/Thread";
 import { CommentForm } from "~/components/CommentForm";
-import { type CommentThree, type NewComment } from "~/types/comments";
+import { type CommentThread, type NewComment } from "~/types/comments";
+import useDarkMode from "~/hooks/useDarkMode";
+import { LightDarkToggle } from "~/components/LightDarkToggle";
+import Image from "next/image";
+import logo from "~/assets/Stellar Soundwave - Vaporwave.png"
 import { getThreads, submitComment } from "~/controllers/comments";
 import { type ApiResponse } from "~/types";
 
 export default function Home() {
-  const [threads, setThreads] = useState<CommentThree[]>([]);
+  const [isDark, flip] = useDarkMode();
+  const [threads, setThreads] = useState<CommentThread[]>([]);
 
   useEffect(()=>{
     void fetchThreads();
@@ -46,20 +51,23 @@ export default function Home() {
         <meta name="description" content="Reddit comments for Inkitt" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+      <main className="min-h-screen bg-secondary text-primary">
+        <LightDarkToggle switchMode={flip} className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw]'/>
+        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16">
+          <Image src={logo} alt={'pocket-reddit'} className={isDark ? '' : 'invert'}/>
           <div className=''>
             {/*TODO: Prevent layout jumping before and after loading*/}
             <CommentForm onSubmit={handleCommentSubmission} />
 
-            <hr className='py-5' />
+            <div className='py-5' />
 
             <div className='min-h-screen'>
-              {threads.map(props => <Thread key={props.id} onSubmitReply={handleCommentSubmission} {...props} />)}
+              {threads.map((props, i) =>
+              <Thread key={props.id} alternateColor={i % 2 !== 0} onSubmitReply={handleCommentSubmission} {...props} />)}
             </div>
           </div>
         </div>
       </main>
     </>
-  );
+  )
 }

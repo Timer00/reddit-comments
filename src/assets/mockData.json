@@ -1,114 +1,64 @@
 [
   {
     "id": 1,
-    "text": "This is the root comment",
-    "author": "Greg",
+    "text": "So, has anyone else ever thought about the potential threat of robot vacuums if integrated with advanced AI?",
+    "author": "TechGuru98",
     "children": [
       {
         "id": 2,
-        "text": "This is a direct reply to the root comment",
-        "author": "Tim",
-        "children": [
-          {
-            "id": 4,
-            "text": "This is a nested reply to comment 2",
-            "author": "Alice",
-            "children": [
-              {
-                "id": 5,
-                "text": "This is a nested reply to comment 4",
-                "author": "Bob"
-              }
-            ]
-          },
-          {
-            "id": 6,
-            "text": "Another nested reply to comment 2",
-            "author": "Eve"
-          }
-        ]
+        "text": "Haha, that's a wild thought! Imagine getting chased by a Roomba with an attitude.",
+        "author": "QuirkyNerd"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "text": "I've read an article discussing how IoT devices, including robot vacuums, could potentially be hacked. It's more about data privacy though.",
+    "author": "CyberSecJane",
+    "children": [
+      {
+        "id": 4,
+        "text": "Right, but it's less about the physical threat and more about data mining and privacy.",
+        "author": "ThinkerDude"
       },
       {
-        "id": 3,
-        "text": "Another direct reply to the root comment",
-        "author": "John",
+        "id": 5,
+        "text": "I mean, if someone hacks my robot vacuum to find out how often I spill chips on my floor, I think I have bigger problems, haha.",
+        "author": "LazyRecliner",
         "children": [
           {
-            "id": 7,
-            "text": "A nested reply to comment 3",
-            "author": "Charlie",
-            "children": [
-              {
-                "id": 8,
-                "text": "A deep nested reply to comment 7",
-                "author": "David"
-              }
-            ]
+            "id": 6,
+            "text": "Actually, the mapping data of your home layout could be valuable. Not so benign when you think of it that way.",
+            "author": "RealistRick"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "text": "More than physical harm, I'd worry about an AI going rogue and deciding it doesn't need to follow my cleaning schedules anymore.",
+    "author": "HouseChaos",
+    "children": [
+      {
+        "id": 8,
+        "text": "What if it joins forces with the smart fridge and they stage a revolt? 😂",
+        "author": "FuturePhobe"
       },
       {
         "id": 9,
-        "text": "Third direct reply to the root comment",
-        "author": "Hannah"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "text": "Another root comment",
-    "author": "Isaac",
-    "children": [
-      {
-        "id": 11,
-        "text": "Reply to the second root comment",
-        "author": "Jack"
-      },
-      {
-        "id": 12,
-        "text": "Another reply to the second root comment",
-        "author": "Kelly",
+        "text": "Jokes aside, it's always a balance. Convenience of tech vs potential misuse or unintended consequences.",
+        "author": "BalancedBen",
         "children": [
           {
-            "id": 13,
-            "text": "Nested reply to comment 12",
-            "author": "Liam"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "text": "Yet another root comment",
-    "author": "Mia",
-    "children": [
-      {
-        "id": 15,
-        "text": "Reply to the third root comment",
-        "author": "Noah"
-      },
-      {
-        "id": 16,
-        "text": "Another reply to the third root comment",
-        "author": "Olivia",
-        "children": [
-          {
-            "id": 17,
-            "text": "Nested reply to comment 16",
-            "author": "Peyton"
+            "id": 10,
+            "text": "As with all tech, it's how humans choose to use or misuse it. We have to be responsible.",
+            "author": "MoralCompass"
           },
           {
-            "id": 18,
-            "text": "Another nested reply to comment 16",
-            "author": "Quinn",
-            "children": [
-              {
-                "id": 19,
-                "text": "Deep nested reply to comment 18",
-                "author": "Riley"
-              }
-            ]
+            "id": 11,
+            "text": "Agreed. At the end of the day, the onus is on us. Be it a smartphone, a vacuum, or any AI system.",
+            "author": "TechEthicist"
           }
         ]
       }

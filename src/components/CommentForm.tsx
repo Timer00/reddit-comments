@@ -5,9 +5,10 @@ import { useUser } from "~/hooks/useUser";
 
 interface CommentFormProps {
   onSubmit: (newComment: NewComment) => void
+  reply?: boolean
 }
 
-export const CommentForm = ({ onSubmit}: CommentFormProps) => {
+export const CommentForm = ({ onSubmit, reply = false }: CommentFormProps) => {
   const [content, setContent] = useState("");
   const { user, setUser } = useUser();
 
@@ -18,8 +19,8 @@ export const CommentForm = ({ onSubmit}: CommentFormProps) => {
   }
 
   return (
-    <form onSubmit={submit} className='w-full'>
-      <label className="block text-sm font-medium leading-6 text-gray-900">
+    <form onSubmit={submit} className='w-full p-1 pt-3'>
+      <label className="block text-sm font-medium leading-6 text-deep-gray mb-1 dark:font-bold">
         Commenting as
         <span contentEditable className='ml-1'
               onClick={()=>setUser('')}
@@ -27,17 +28,17 @@ export const CommentForm = ({ onSubmit}: CommentFormProps) => {
           {user}
         </span>:
       </label>
-      <div className="border-gray-200 border-2 rounded">
+      <div className="border-light-gray border-2 rounded">
         <textarea
           rows={4}
           name="comment"
-          className="p-4 block w-full placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          className="p-4 block w-full placeholder:text-dark-gray sm:text-sm sm:leading-6 bg-secondary"
           placeholder='Add your comment...'
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <div className='bg-gray-200 flex flex-row'>
-          <SubmitButton disabled={!content || !user}>Reply</SubmitButton>
+        <div className='bg-light-gray flex flex-row items-center'>
+          <SubmitButton disabled={!content || !user}>{ reply ? 'Reply' : 'Comment'}</SubmitButton>
         </div>
       </div>
     </form>
