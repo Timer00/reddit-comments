@@ -9,6 +9,8 @@ import Image from "next/image";
 import logo from "~/assets/Stellar Soundwave - Vaporwave.png"
 import { getThreads, submitComment } from "~/controllers/comments";
 import { type ApiResponse } from "~/types";
+import { supabase } from "~/lib/supabase";
+import { addNestedComment } from "~/utils/comments";
 
 export default function Home() {
   const [isDark, flip] = useDarkMode();
@@ -17,6 +19,35 @@ export default function Home() {
   useEffect(()=>{
     void fetchThreads();
   },[])
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+        },
+        (payload) => {
+          const newComment = payload.new as CommentThread;
+          addNewCommentToThread(newComment);
+        }
+      )
+      .subscribe()
+
+    return () => {
+      // Clean up subscription on component unmount
+      void supabase.removeChannel(channel);
+    };
+  }, []);
+
+  const addNewCommentToThread = (newCommentWithId: CommentThread) => {
+    if (!newCommentWithId.parentId)
+      setThreads([...threads, newCommentWithId]);
+    else
+      setThreads(addNestedComment(threads, newCommentWithId));
+  }
 
   const fetchThreads = async () => {
     try {
