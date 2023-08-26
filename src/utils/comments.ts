@@ -1,4 +1,4 @@
-import { type CommentThread, type NewComment } from "~/types/comments";
+import { type CommentThread } from "~/types/comments";
 
 export function addNestedComment(threads: CommentThread[], newComment: CommentThread): CommentThread[] {
   return threads.map(comment => {
@@ -17,4 +17,20 @@ export function addNestedComment(threads: CommentThread[], newComment: CommentTh
     // Return the comment as is if no match is found
     return comment;
   });
+}
+
+export function isDuplicateComment(threads: CommentThread[], newComment: CommentThread): boolean {
+  for (const comment of threads) {
+    // If both comment IDs match
+    if (comment.id === newComment.id) {
+      return true;
+    }
+
+    // If the comment has children, search within them
+    if (comment.children) {
+      return isDuplicateComment(comment.children, newComment)
+    }
+  }
+  // Return the false if no match is found
+  return false;
 }
