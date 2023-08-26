@@ -6,7 +6,7 @@ export interface CommentThread {
   author: string;
   text: string;
 
-  parentId?: number
+  parentId?: number | null
   children?: CommentThread[]
 }
 

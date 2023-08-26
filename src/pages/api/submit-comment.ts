@@ -9,9 +9,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const newComment: Omit<Tables<'comments'>, 'id'> = {author, text, parent_id: parentId}
   // The id will be defined by supabase
 
-  const { error } = await supabase
+  const { data: result ,error } = await supabase
     .from('comments')
     .insert(newComment)
+    .select()
 
   if (error) {
     console.error(error);
@@ -19,5 +20,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     throw Error;
   }
 
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: true, result });
 }
