@@ -10,7 +10,7 @@ import logo from "~/assets/Stellar Soundwave - Vaporwave.png"
 import { getThreads, submitComment } from "~/controllers/comments";
 import { type ApiResponse } from "~/types";
 import { supabase } from "~/lib/supabase";
-import { addNestedComment } from "~/utils/comments";
+import { addNestedComment, isDuplicateComment } from "~/utils/comments";
 import { type Tables } from "~/lib/schema";
 
 export default function Home() {
@@ -31,7 +31,8 @@ export default function Home() {
           schema: 'public',
         },
         (payload) => {
-          const newComment = payload.new as CommentThread;
+          const { text, author, id, parent_id: parentId } = payload.new as Tables<'comments'>;
+          const newComment = { text, author, id, parentId };
           addNewCommentToThread(newComment);
         }
       )
@@ -44,13 +45,16 @@ export default function Home() {
   }, []);
 
   const addNewCommentToThread = (newCommentWithId: CommentThread) => {
-    if (!newCommentWithId.parentId) {
-      setThreads(prevThreads => [...prevThreads, newCommentWithId]);
-    } else {
-      setThreads(prevThreads => addNestedComment(prevThreads, newCommentWithId));
-    }
-  }
+    setThreads(prevThreads => {
+      if (isDuplicateComment(prevThreads, newCommentWithId)) return prevThreads;
 
+      if (!newCommentWithId.parentId) {
+        return [...prevThreads, newCommentWithId];
+      } else {
+        return addNestedComment(prevThreads, newCommentWithId);
+      }
+    })
+  }
 
   const fetchThreads = async () => {
     try {
@@ -87,9 +91,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-screen bg-secondary text-primary">
-        <LightDarkToggle switchMode={flip} className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw]' />
-        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <Image src={logo} alt={'pocket-reddit'} className={isDark ? '' : 'invert'} />
+        <LightDarkToggle switchMode={flip}
+                         className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw] z-10' />
+        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16 z-0">
+          <Image src={logo} alt={'pocket-reddit'} className={`${isDark ? '' : 'invert'}`} />
           <div className=''>
             {/*TODO: Prevent layout jumping before and after loading*/}
             <CommentForm onSubmit={handleCommentSubmission} />
