@@ -86,7 +86,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Reddit comments for Inkitt</title>
+        <title>Pocket Reddit</title>
         <meta name="description" content="Reddit comments for Inkitt" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
