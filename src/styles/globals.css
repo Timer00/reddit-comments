@@ -7,21 +7,21 @@
 :root {
     --color-primary: 00 00 00;
     --color-secondary: 256 256 256;
-    --color-deep-gray: 17 24 39;      /* Deepest due to the lowest RGB values */
+    --color-deep-gray: 17 24 39; /* Deepest due to the lowest RGB values */
     --color-dark-gray: 156 163 175;
     --color-mid-gray: 209 213 219;
     --color-light-gray: 229 231 235;
-    --color-pale-gray: 243 244 246;      /* Palest due to the highest RGB values close to white */
+    --color-pale-gray: 243 244 246; /* Palest due to the highest RGB values close to white */
 }
 
 .dark {
-    --color-primary: 256 256 256;           /* This becomes the inverse of the original primary */
-    --color-secondary: 00 00 00;            /* This is now the darkest, inverting the secondary */
-    --color-deep-gray: 238 231 216;         /* Inverting the deepest gray */
-    --color-dark-gray: 99 92 80;            /* Inverting the dark gray */
-    --color-mid-gray: 46 42 36;             /* Inverting the mid gray */
-    --color-light-gray: 26 24 20;           /* Inverting the light gray */
-    --color-pale-gray: 12 11 9;             /* Inverting the pale gray, though keeping it a bit away from pure black for contrast */
+    --color-primary: 256 256 256; /* This becomes the inverse of the original primary */
+    --color-secondary: 00 00 00; /* This is now the darkest, inverting the secondary */
+    --color-deep-gray: 238 231 216; /* Inverting the deepest gray */
+    --color-dark-gray: 99 92 80; /* Inverting the dark gray */
+    --color-mid-gray: 46 42 36; /* Inverting the mid gray */
+    --color-light-gray: 26 24 20; /* Inverting the light gray */
+    --color-pale-gray: 12 11 9; /* Inverting the pale gray, though keeping it a bit away from pure black for contrast */
 }
 
 /* Add this so all elements will transition smoothly between light/dark mode.  */
@@ -30,4 +30,14 @@
     transition-property: all;
     transition-timing-function: ease-in;
     transition-duration: 100ms;
+}
+
+/* Make sure the thread children don't show the pointer, only show it when hovering the element itself */
+
+.thread > * {
+    cursor: default;
+}
+
+.thread {
+    cursor: pointer;
 }
