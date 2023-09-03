@@ -37,12 +37,12 @@ export const Thread = ({ id, author, text, children, nestLevel = 0, onSubmitRepl
   return (
     <div
       onClick={handleToggleReplies}
-      className={`thread p-2 pl-4 m-2 my-4 rounded border-l-4 border-mid-gray hover:border-deep-gray min-w-[130px] w-auto
+      className={`thread p-2 pl-4 m-2 my-4 rounded border-l-4 border-mid-gray hover:border-deep-gray w-fit
       ${children?.length === 0 && '!cursor-default'}
       ${alternateColor ? 'bg-secondary' : 'bg-pale-gray'} 
       ${nestLevel > 0 ? 'pl-2 pt-2 ml-8 ' : ''}`}>
-      <Comment author={author} content={text} />
-      <div className='flex gap-2 mt-2' >
+      <Comment author={author} content={text} className='max-w-[80vw]' />
+      <div className='flex gap-2 mt-2'>
         <button onClick={onReply}
                 className='text-xs flex gap-1 hover:bg-primary hover:text-secondary border-2 rounded-2xl p-1 px-2'>
           {showReplyForm ?

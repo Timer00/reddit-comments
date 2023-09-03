@@ -93,7 +93,8 @@ export default function Home() {
       <main className="min-h-screen bg-secondary text-primary">
         <LightDarkToggle switchMode={flip}
                          className='absolute top-[2vh] sm:top-[2vh] right-[20vw] sm:right-[8vw] z-10' />
-        <div className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16 z-0 min-w-full min-h-screen">
+        <div
+          className="m-auto container flex flex-col items-center justify-center gap-12 px-4 py-16 z-0 min-w-full min-h-screen">
           <Image src={logo} alt={'pocket-reddit'} className={`${isDark ? '' : 'invert'}`} />
           <div className='w-[90vw]'>
             {/*TODO: Prevent layout jumping before and after loading*/}
@@ -102,13 +103,11 @@ export default function Home() {
             <div className='py-5' />
 
             <div className='min-h-screen overflow-x-scroll'>
-              <div className='w-auto'>
-                {threads
-                  .sort((a, b) => b.id - a.id)
-                  .map((props, i) =>
-                    <Thread key={props.id} alternateColor={i % 2 !== 0}
-                            onSubmitReply={handleCommentSubmission} {...props} />)}
-              </div>
+              {threads
+                .sort((a, b) => b.id - a.id)
+                .map((props, i) =>
+                  <Thread key={props.id} alternateColor={i % 2 !== 0}
+                          onSubmitReply={handleCommentSubmission} {...props} />)}
             </div>
           </div>
         </div>
