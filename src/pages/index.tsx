@@ -12,8 +12,10 @@ import { type ApiResponse } from "~/types";
 import { supabase } from "~/lib/supabase";
 import { addNestedComment, isDuplicateComment } from "~/utils/comments";
 import { type Tables } from "~/lib/schema";
+import useScreenDimensions from "~/hooks/useScreenDimensions";
 
 export default function Home() {
+  const [screenW] = useScreenDimensions();
   const [isDark, flip] = useDarkMode();
   const [threads, setThreads] = useState<CommentThread[]>([]);
 
@@ -101,11 +103,11 @@ export default function Home() {
 
             <div className='py-5' />
 
-            <div className='min-h-screen overflow-x-scroll'>
+            <div className='min-h-screen'>
               {threads
                 .sort((a, b) => b.id - a.id)
                 .map((props, i) =>
-                  <Thread key={props.id} alternateColor={i % 2 !== 0}
+                  <Thread key={props.id} alternateColor={i % 2 !== 0} containerW={screenW * 0.86}
                           onSubmitReply={handleCommentSubmission} {...props} />)}
             </div>
           </div>

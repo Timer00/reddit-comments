@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, type ReactNode, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useState, type ReactNode, useEffect } from 'react';
 
 type User = string;
 

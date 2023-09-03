@@ -34,3 +34,16 @@ export function isDuplicateComment(threads: CommentThread[], newComment: Comment
   // Return the false if no match is found
   return false;
 }
+
+export function threadLayerDeepness(children: CommentThread[], count = 0) {
+  if (children.length === 0)
+    return count
+
+  count += 1;
+  for (const c of children){
+    const layersDeep = threadLayerDeepness(c.children, count);
+    if (layersDeep > count) count = layersDeep
+  }
+
+  return count;
+}
