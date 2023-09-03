@@ -1,9 +1,8 @@
 import { nextApiRequest } from "~/utils";
-import { type Tables } from "~/lib/schema";
-import { type NewComment } from "~/types/comments";
+import { type CommentThread, type NewComment } from "~/types/comments";
 import { type ApiResponse } from "~/types";
 
-export const getThreads: () => Promise<Tables<'comments'>[]> = async () => {
+export const getThreads: () => Promise<CommentThread[]> = async () => {
   return await nextApiRequest('get-threads');
 };
 

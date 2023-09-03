@@ -37,7 +37,7 @@ export const Thread = ({ id, author, text, children, nestLevel = 0, onSubmitRepl
   return (
     <div
       onClick={handleToggleReplies}
-      className={`thread p-2 pl-4 m-2 my-4 rounded border-l-4 border-mid-gray hover:border-deep-gray overflow-x-scroll
+      className={`thread p-2 pl-4 m-2 my-4 rounded border-l-4 border-mid-gray hover:border-deep-gray overflow-x-auto min-w-[130px]
       ${children?.length === 0 && '!cursor-default'}
       ${alternateColor ? 'bg-secondary' : 'bg-pale-gray'} 
       ${nestLevel > 0 ? 'pl-2 pt-2 ml-8 w-fit' : ''}`}>

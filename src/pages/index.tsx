@@ -32,7 +32,7 @@ export default function Home() {
         },
         (payload) => {
           const { text, author, id, parent_id: parentId } = payload.new as Tables<'comments'>;
-          const newComment = { text, author, id, parentId };
+          const newComment = { text, author, id, parentId, children: [] };
           addNewCommentToThread(newComment);
         }
       )
@@ -59,7 +59,6 @@ export default function Home() {
   const fetchThreads = async () => {
     try {
       const comments = await getThreads();
-      console.log('fetchThreads!');
       setThreads(comments)
     } catch (error) {
       console.error(error);
@@ -68,7 +67,7 @@ export default function Home() {
 
   const submitNewComment = async ({ author, text, parentId }: NewComment) => {
     try {
-      const response: ApiResponse = await submitComment({ author, text, parentId });
+      const response: ApiResponse = await submitComment({ author, text, parentId, children: [] });
 
       if (response.success && response.result) {
         console.log('Comment submitted successfully!')

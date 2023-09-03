@@ -7,7 +7,7 @@ export interface CommentThread {
   text: string;
 
   parentId?: number | null
-  children?: CommentThread[]
+  children: CommentThread[] | []
 }
 
 export interface NewComment extends Omit<CommentThread, 'id'> {
